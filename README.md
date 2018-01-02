@@ -13,6 +13,14 @@ As a User
 So I can let all my homes
 I want to be able to list more than one space
 
+As a booking User
+So I can choose a space
+I want to view all the available spaces
+
+As a letting User
+So I can see which spaces I have listed
+I want to view all my spaces
+
 As a User
 So people know about my space
 I want to be able to give it a name and description
