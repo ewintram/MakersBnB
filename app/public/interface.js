@@ -1,4 +1,6 @@
 $( document ).ready(function(){
+  $('h1').html("string")
+  
   $('#submit_space').click(function(){
     list($("#name").val(), $("#description").val(), $("#price").val());
     $("#name").val("")
