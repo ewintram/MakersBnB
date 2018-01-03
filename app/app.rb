@@ -45,21 +45,23 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/list' do
     content_type :json
+    p Space.first
     Space.all.map {|space|
       {
         name: space.name,
         description: space.description, 
-        price: space.price, 
+        price: format('%.2f', space.price), 
         user: space.user.username
         }
     }.to_json
+   
   end
 
   post '/spaces' do
     Space.create(name: params[:name],
       description: params[:description],
       price: params[:price],
-      user: nil)
+      user: current_user)
     redirect '/spaces'
   end
 
