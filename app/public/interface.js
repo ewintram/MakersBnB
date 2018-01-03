@@ -11,5 +11,3 @@ $( document ).ready(function(){
 list = function(name, description, price){
   $("#spaces").append("<li>" + name + " " + description + " &pound" + price + "</li>")
 }
-
-//test comment
