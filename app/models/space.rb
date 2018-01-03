@@ -4,10 +4,10 @@ class Space
   property :id, Serial
   property :name, String, required: true
   property :description, Text
-  property :price, Float, required: true 
+  property :price, Float, required: true
 
   has n, :bookings, through: Resource
 
-  belongs_to :user
+  belongs_to :user, required: false
 
 end

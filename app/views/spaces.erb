@@ -15,8 +15,7 @@
             <%= space.name%></p>
           <p>Description:
             <%= space.description %></p>
-          <p>Price:
-            <%= space.price %></p>
+          <p>Price: £<%= format('%.2f', space.price) %></p>
         </li>
       <% end %>
     </ul>
