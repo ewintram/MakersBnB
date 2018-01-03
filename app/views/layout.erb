@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> MakersBnB</title>
+  </head>
+  <body>
+    <% if current_user %>
+    Welcome <%= current_user.first_name %>!
+    <% end %>
+    <%= yield %>
+    <!-- yields to the view which has been called by the controller -->
+  </body>
+</html>
