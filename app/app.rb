@@ -2,13 +2,14 @@ require 'sinatra/base'
 require_relative './models/user'
 require_relative './models/booking'
 require_relative './models/space'
+require 'sinatra/flash'
 require_relative 'DataMapperSetup'
 
 class MakersBnB < Sinatra::Base
   data_mapper_setup
-
   enable :sessions
   set :session_secret, 'super secret'
+  register Sinatra::Flash
 
   helpers do
     def current_user
@@ -47,6 +48,14 @@ class MakersBnB < Sinatra::Base
       price: params[:price],
       user: nil)
     redirect '/spaces'
+  end
+
+  post '/login' do
+    if user
+      session[:user_id] = user.id
+      redirect '/spaces'
+    else
+    end
   end
 
 end
