@@ -12,10 +12,12 @@
         <% end %>
       </ul>
     <% end %>
-    
+
     <% if current_user %>
     Welcome <%= current_user.first_name %>!
-    <button formaction="/logout" type='submit' value='Log out'>
+      <form method="post" action="/logout">
+        <input type="submit" value="Log out">
+      </form>
     <% end %>
 
     <% if !current_user%>

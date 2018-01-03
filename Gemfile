@@ -6,6 +6,7 @@ ruby '2.4.1'
 gem 'capybara'
 gem 'rspec'
 gem 'sinatra'
+gem 'sinatra-flash'
 gem 'selenium-webdriver'
 
 gem 'bcrypt'

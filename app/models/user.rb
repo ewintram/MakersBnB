@@ -18,7 +18,7 @@ class User
   attr_reader :password
   attr_accessor :password_confirm
 
-  validates_confirmation_of :password, confirm: :password_confirm 
+  validates_confirmation_of :password, confirm: :password_confirm
 
   def password=(password)
     @password = password
@@ -27,5 +27,14 @@ class User
 
   def authenticate(password)
     Password.new(password_hash) == password
+  end
+
+  def self.authenticate(username, password)
+    user = first(username: username)
+    if user && user.authenticate(password)
+      user
+    else
+      nil
+    end
   end
 end

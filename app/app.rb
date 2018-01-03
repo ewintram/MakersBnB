@@ -51,11 +51,14 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/login' do
-    if user
-      session[:user_id] = user.id
-      redirect '/spaces'
-    else
-    end
+    user = User.authenticate(params[:username], params[:password])
+    session[:user_id] = user.id
+    redirect '/spaces'
+  end
+
+  post '/logout' do
+    session[:user_id] = nil
+    redirect '/spaces'
   end
 
 end
