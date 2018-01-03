@@ -54,3 +54,10 @@ So that I don't end up sleeping on the same bed as someone else without their co
 I only want to book available spaces
 
 ```
+## Mockups
+
+--------------------------------------------------------------------------------
+
+## ![Mockup1](https://i.imgur.com/PfJRvtw.jpg)
+## ![Mockup2](https://i.imgur.com/rQlV1LM.jpg)
+## ![Mockup3](https://i.imgur.com/L9Uvlrh.jpg)
