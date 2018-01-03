@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Makersbnb</title>
+  </head>
+
+  <body>
+    <h1>Makersbnb<h1>
+    <h2>Spaces<h2>
+
+    <ul id='spaces'>
+      <% @spaces.each do |space| %>
+        <li>
+          <p>Name:
+            <%= space.name%></p>
+          <p>Description:
+            <%= space.description %></p>
+          <p>Price:
+            <%= space.price %></p>
+        </li>
+      <% end %>
+    </ul>
+
+  </body>
+</html>
