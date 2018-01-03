@@ -6,7 +6,7 @@ feature("test framework functioning") do
 end
 
 feature("list spaces") do
-  scenario("user can add name, description and price for a space", js: true) do
+  scenario("user can add name, description and price for a space") do
 
     visit '/spaces/new'
     fill_in :name, with: "My house"
