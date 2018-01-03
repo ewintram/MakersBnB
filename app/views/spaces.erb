@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Makersbnb</title>
+    <script src= 'interface.js'></script>
   </head>
 
   <body>
@@ -9,16 +10,9 @@
     <h2>Spaces<h2>
 
     <ul id='spaces'>
-      <% @spaces.each do |space| %>
-        <li>
-          <p>Name:
-            <%= space.name%></p>
-          <p>Description:
-            <%= space.description %></p>
-          <p>Price: £<%= format('%.2f', space.price) %></p>
-        </li>
-      <% end %>
     </ul>
+
+    <button id= 'refresh' >Refresh</button> 
 
   </body>
 </html>

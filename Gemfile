@@ -8,6 +8,7 @@ gem 'rspec'
 gem 'sinatra'
 gem 'sinatra-flash'
 gem 'selenium-webdriver'
+gem 'json'
 
 gem 'bcrypt'
 
