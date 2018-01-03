@@ -20,6 +20,21 @@ class MakersBnB < Sinatra::Base
     erb(:newspace)
   end
 
+  get '/users/new' do
+    erb(:signup)
+  end
+
+  post '/users' do
+    user = User.create(email: params[:email],
+      username: params[:username],
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      password: params[:password],
+      password_confirm: params[:password_confirm])
+    session[:user_id] = user.id
+    redirect '/spaces'
+  end
+
   get '/spaces' do
     @user = current_user
     @spaces = Space.all
