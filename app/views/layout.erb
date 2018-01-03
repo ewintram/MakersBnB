@@ -4,9 +4,20 @@
     <title> MakersBnB</title>
   </head>
   <body>
+      <% if flash[:errors] && !flash[:errors].empty? %>
+      Please refer to the following errors below:
+      <ul id='errors'>
+        <% flash[:errors].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    
     <% if current_user %>
     Welcome <%= current_user.first_name %>!
+    <button formaction="/logout" type='submit' value='Log out'>
     <% end %>
+
     <% if !current_user%>
       <form action="/login" method="post">
         <input type="text" name="username" placeholder="username">
@@ -14,6 +25,7 @@
         <input type='submit' value='Log in'>
       </form>
     <% end %>
+
     <%= yield %>
     <!-- yields to the view which has been called by the controller -->
   </body>
