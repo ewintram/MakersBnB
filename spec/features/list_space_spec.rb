@@ -10,9 +10,12 @@ feature("list spaces") do
 
     visit '/'
     fill_in :name, with: "My house"
-    # fill_in :description, with: "Nice crib. It's rad"
-    # fill_in :price, with: 2
+    fill_in :description, with: "Nice crib. It's rad"
+    fill_in :price, with: 2
+    click_button :submit_space
 
     expect(page).to have_content("My house")
+    expect(page).to have_content("Nice crib. It's rad")
+    expect(page).to have_content("£2")
   end
 end
