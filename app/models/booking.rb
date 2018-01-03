@@ -3,7 +3,7 @@ class Booking
 
   property :id, Serial
   property :confirmed, Boolean
-  property :Dates
+  property :date_range, DateTime
 
   has n, :users, through: Resource
   has n, :spaces, through: Resource

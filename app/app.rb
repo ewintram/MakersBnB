@@ -1,6 +1,11 @@
 require 'sinatra/base'
+require_relative './models/user'
+require_relative './models/booking'
+require_relative './models/space'
+require_relative 'DataMapperSetup'
 
 class MakersBnB < Sinatra::Base
+  data_mapper_setup
 
   enable :sessions
   set :session_secret, 'super secret'

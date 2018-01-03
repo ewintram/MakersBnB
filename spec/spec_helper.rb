@@ -1,11 +1,9 @@
+ENV['RACK_ENV'] = "test"
 require 'capybara'
 require 'capybara/rspec'
 require './app/app'
 require 'selenium/webdriver'
-
 require 'database_cleaner'
-
-ENV['RACK_ENV'] = :test
 
 Capybara.app = MakersBnB
 
@@ -14,7 +12,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
-  
+
    config.before(:each) do
     DatabaseCleaner.start
   end
