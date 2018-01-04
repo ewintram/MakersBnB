@@ -45,6 +45,7 @@ class MakersBnB < Sinatra::Base
   get '/spaces' do
     @user = current_user
     @spaces = Space.all
+    @home = true
     erb(:spaces)
   end
 
