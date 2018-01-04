@@ -4,8 +4,8 @@ $( document ).ready(function(){
   })
 });
 
-list = function(){
-  $.get('/spaces/list', function(spaces) {
+list = function(filter= 'nil'){ 
+  $.get('/spaces/list/'+ filter, function(spaces) {
 	spaces.forEach(function(space) {
 	  $("#spaces").append("<li><a id='space_id' href='/spaces/" + space.id + "'>" + space.name + "</a> " + space.description +
 		" &pound" + space.price + " listed by " + space.user + "</li>")

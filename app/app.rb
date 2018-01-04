@@ -45,12 +45,14 @@ class MakersBnB < Sinatra::Base
   get '/spaces' do
     @user = current_user
     @spaces = Space.all
+    @home = true
     erb(:spaces)
   end
 
-  get '/spaces/list' do
+  get '/spaces/list/:filter' do
     content_type :json
-    Space.all.map {|space|
+
+    Space.all(create_filter_for(params[:filter])).map {|space|
       {
         name: space.name,
         description: space.description,
@@ -59,6 +61,16 @@ class MakersBnB < Sinatra::Base
         id: space.id
         }
     }.to_json
+  end
+
+  def create_filter_for(criterion)
+ 
+    case criterion
+      when "lowprice" then {:price.lte => 10}
+      when "midprice" then {:price.gt => 10, :price.lte => 20}
+      when "highprice" then {:price.gt => 20}
+    end
+
   end
 
   post '/spaces' do
@@ -88,6 +100,7 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/my-spaces' do
     @spaces = Space.all(user: current_user)
+    @mine = true
     erb :spaces
   end
 
