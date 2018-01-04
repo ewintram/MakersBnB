@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Makersbnb</title>
+    <script src = 'jquery-3.2.1.min.js'></script>
+    <script src = 'interface.js'></script>
+  </head>
+
+  <body>
+    <h1>Makersbnb<h1>
+    <h2>Spaces<h2>
+
+    <ul id='space'>
+      <li><%= @space.name %></li>
+      <li><%= @space.description %></li>
+      <li><%= @space.price %></li>
+      <li><%= @space.user.username %></li>
+    </ul>
+
+  </body>
+</html>

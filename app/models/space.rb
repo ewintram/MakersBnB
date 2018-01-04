@@ -8,6 +8,6 @@ class Space
 
   has n, :bookings, through: Resource
 
-  belongs_to :user, required: false
+  belongs_to :user
 
 end
