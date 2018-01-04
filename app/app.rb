@@ -18,7 +18,7 @@ class MakersBnB < Sinatra::Base
     end
   end
 
-  get '/spaces/new' do
+  get '/spaces/my-spaces/new' do
     erb(:newspace)
   end
 
@@ -59,15 +59,14 @@ class MakersBnB < Sinatra::Base
         id: space.id
         }
     }.to_json
-
   end
 
   post '/spaces' do
-    Space.create(name: params[:name],
+    space = Space.create(name: params[:name],
       description: params[:description],
       price: params[:price],
       user: current_user)
-    redirect '/spaces'
+    redirect "/spaces/#{space.id}"
   end
 
   post '/login' do
@@ -87,12 +86,14 @@ class MakersBnB < Sinatra::Base
     redirect '/spaces'
   end
 
+  get '/spaces/my-spaces' do
+    @spaces = Space.all(user: current_user)
+    erb :spaces
+  end
+
   get '/spaces/:id' do
     @space = Space.first(id: params[:id])
     erb :viewspace
   end
-
-
-
 
 end

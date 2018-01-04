@@ -24,7 +24,7 @@ def sign_out
 end
 
 def create_space
-  visit '/spaces/new'
+  visit '/spaces/my-spaces/new'
   fill_in :name, with: "My house"
   fill_in :description, with: "Nice crib. It's rad"
   fill_in :price, with: 2

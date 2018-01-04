@@ -4,6 +4,7 @@ feature("view a space") do
   scenario("shows the information about the space") do
     sign_up
     create_space
+    visit '/spaces'
     within("ul") do
       click_link ("My house")
     end

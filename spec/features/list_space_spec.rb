@@ -8,11 +8,11 @@ feature("test framework functioning") do
 end
 
 feature("list spaces") do
-  scenario("user can add name, description and price for a space", js: true) do
+  scenario("spaces listed by user remain on the user's 'my spaces' page") do
     sign_up
     create_space
 
-    expect(current_path).to eq("/spaces")
+    expect(current_path).to eq("/spaces/1")
     expect(page).to have_content("My house")
     expect(page).to have_content("Nice crib. It's rad")
     expect(page).to have_content("£2.00")
