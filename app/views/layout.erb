@@ -20,13 +20,13 @@
       </form>
     <% end %>
 
-    <% if @home == false %>
+    <% if !@home %>
     <form action="/spaces">
       <input type="submit" value="Home">
     </form>
     <% end %>
 
-    <% if current_user && @mine == false %>
+    <% if current_user && !@mine %>
     <form action="/spaces/my-spaces">
       <input type="submit" value="My spaces">
     </form>
