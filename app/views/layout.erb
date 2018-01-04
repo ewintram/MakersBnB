@@ -20,6 +20,18 @@
       </form>
     <% end %>
 
+    <% if @home == false %>
+    <form action="/spaces">
+      <input type="submit" value="Home">
+    </form>
+    <% end %>
+
+    <% if current_user && @mine == false %>
+    <form action="/spaces/my-spaces">
+      <input type="submit" value="My spaces">
+    </form>
+    <% end %>
+
     <% if !current_user%>
       <form action="/login" method="post">
         <input type="text" name="username" placeholder="username">
