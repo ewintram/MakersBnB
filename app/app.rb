@@ -45,7 +45,6 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/list' do
     content_type :json
-    p Space.first
     Space.all.map {|space|
       {
         name: space.name,
