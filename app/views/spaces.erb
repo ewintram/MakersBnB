@@ -10,6 +10,12 @@
     <h1>Makersbnb<h1>
     <h2>Spaces<h2>
 
+    <% if current_user %>
+    <form action="/spaces/my-spaces/new">
+      <input type="submit" value="Create a space">
+    </form>
+    <% end %>
+
     <ul id='spaces'>
       <% @spaces.each do |space| %>
         <li>
