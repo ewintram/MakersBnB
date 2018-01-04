@@ -22,3 +22,11 @@ def sign_out
   visit '/spaces'
   click_button 'Log out'
 end
+
+def create_space
+  visit '/spaces/new'
+  fill_in :name, with: "My house"
+  fill_in :description, with: "Nice crib. It's rad"
+  fill_in :price, with: 2
+  click_button :submit_space
+end

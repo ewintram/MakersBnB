@@ -10,11 +10,7 @@ end
 feature("list spaces") do
   scenario("user can add name, description and price for a space", js: true) do
     sign_up
-    visit '/spaces/new'
-    fill_in :name, with: "My house"
-    fill_in :description, with: "Nice crib. It's rad"
-    fill_in :price, with: 2
-    click_button :submit_space
+    create_space
 
     expect(current_path).to eq("/spaces")
     expect(page).to have_content("My house")

@@ -28,13 +28,18 @@ class MakersBnB < Sinatra::Base
 
   post '/users' do
     user = User.create(email: params[:email],
-      username: params[:username],
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      password: params[:password],
-      password_confirm: params[:password_confirm])
-    session[:user_id] = user.id
-    redirect '/spaces'
+            username: params[:username],
+            first_name: params[:first_name],
+            last_name: params[:last_name],
+            password: params[:password],
+            password_confirm: params[:password_confirm])
+    if user.save
+      session[:user_id] = user.id
+      redirect '/spaces'
+    else
+      flash.next[:errors] = user.errors.full_messages
+      redirect('/users/new')
+    end
   end
 
   get '/spaces' do
@@ -48,12 +53,13 @@ class MakersBnB < Sinatra::Base
     Space.all.map {|space|
       {
         name: space.name,
-        description: space.description, 
-        price: format('%.2f', space.price), 
-        user: space.user.username
+        description: space.description,
+        price: format('%.2f', space.price),
+        user: space.user.username,
+        id: space.id
         }
     }.to_json
-   
+
   end
 
   post '/spaces' do
@@ -66,13 +72,27 @@ class MakersBnB < Sinatra::Base
 
   post '/login' do
     user = User.authenticate(params[:username], params[:password])
-    session[:user_id] = user.id
-    redirect '/spaces'
+    if user
+      session[:user_id] = user.id
+      redirect '/spaces'
+    else
+      flash.next[:errors] = ['The email or password is incorrect']
+      redirect '/users/new'
+    end
   end
 
   post '/logout' do
     session[:user_id] = nil
+    flash.keep[:notice] = 'goodbye!'
     redirect '/spaces'
   end
+
+  get '/spaces/:id' do
+    @space = Space.first(id: params[:id])
+    erb :viewspace
+  end
+
+
+
 
 end
