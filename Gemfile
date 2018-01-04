@@ -9,7 +9,7 @@ gem 'sinatra'
 gem 'sinatra-flash'
 gem 'selenium-webdriver'
 gem 'json'
-
+gem 'pry'
 gem 'bcrypt'
 
 gem 'data_mapper', '1.2.0'

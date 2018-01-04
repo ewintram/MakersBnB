@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Makersbnb</title>
-    <script src = 'jquery-3.2.1.min.js'></script>
-    <script src = 'interface.js'></script>
+
+
   </head>
 
   <body>
@@ -13,7 +13,7 @@
     <ul id='space'>
       <li><%= @space.name %></li>
       <li><%= @space.description %></li>
-      <li><%= @space.price %></li>
+      <li>£<%= format('%.2f', @space.price) %></li>
       <li><%= @space.user.username %></li>
     </ul>
 
