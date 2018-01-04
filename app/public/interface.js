@@ -1,13 +1,15 @@
 $( document ).ready(function(){
-
-  $('#submit_space').click(function(){
-    list($("#name").val(), $("#description").val(), $("#price").val());
-    $("#name").val("")
-    $("#description").val("")
-    $("#price").val("")
-})
+	list()
+  $("#refresh").click(function(){
+  	list()
+  })
 });
 
-list = function(name, description, price){
-  $("#spaces").append("<li>" + name + " " + description + " &pound" + price + "</li>")
+list = function(){
+  $.get('/spaces/list', function(spaces) {
+	spaces.forEach(function(space) {
+	  $("#spaces").append("<li>" + space.name + " " + space.description + " &pound" + space.price + " listed by " + space.user + "</li>")
+	})
+  })
 }
+

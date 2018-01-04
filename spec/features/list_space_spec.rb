@@ -1,3 +1,5 @@
+require_relative 'user_access_helpers'
+
 feature("test framework functioning") do
   scenario("shows the page title") do
     visit '/spaces'
@@ -6,8 +8,8 @@ feature("test framework functioning") do
 end
 
 feature("list spaces") do
-  scenario("user can add name, description and price for a space") do
-
+  scenario("user can add name, description and price for a space", js: true) do
+    sign_up
     visit '/spaces/new'
     fill_in :name, with: "My house"
     fill_in :description, with: "Nice crib. It's rad"

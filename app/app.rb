@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'json'
 require_relative './models/user'
 require_relative './models/booking'
 require_relative './models/space'
@@ -42,11 +43,24 @@ class MakersBnB < Sinatra::Base
     erb(:spaces)
   end
 
+  get '/spaces/list' do
+    content_type :json
+    Space.all.map {|space|
+      {
+        name: space.name,
+        description: space.description, 
+        price: format('%.2f', space.price), 
+        user: space.user.username
+        }
+    }.to_json
+   
+  end
+
   post '/spaces' do
     Space.create(name: params[:name],
       description: params[:description],
       price: params[:price],
-      user: nil)
+      user: current_user)
     redirect '/spaces'
   end
 
