@@ -14,14 +14,8 @@
           <a class="navbar-brand" href="#">MakersBnB</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="/spaces">All Spaces</a></li>
-          <li><a href="#">My Spaces</a></li>
-          <% if !@home %>
-          <li><form action="/spaces">
-            <input type="submit" value="Home">
-          </form></li>
-          <% end %>
+          <% if !@home %><li class="active"><a href="/spaces">All Spaces</a></li>  <% end %>
+          <% if @home %><li><a href="#">My Spaces</a></li><% end %>
         </ul>
       </div>
     </nav>
@@ -81,6 +75,12 @@
         <% end %>
       </ul>
     <% end %>
+
+
+
+
+
+
 
 
     <% if flash[:notice] %>

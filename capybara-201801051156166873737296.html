@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title> MakersBnB</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+  <div id="container" class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">MakersBnB</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="/spaces">All Spaces</a></li>
+          <li><a href="#">My Spaces</a></li>
+          
+          <li><form action="/spaces">
+            <input type="submit" value="Home">
+          </form></li>
+          
+        </ul>
+      </div>
+    </nav>
+
+
+
+
+    <div class="row">
+
+      <div class="col-sm-4" align="center">
+
+
+        
+        <form action="/spaces/my-spaces">
+          <input type="submit" value="My spaces">
+        </form>
+        
+      </div>
+      <div class="col-sm-4" align="center">
+      </div>
+      <div class="col-sm-4" align="right">
+        
+        Welcome Tester!
+          <form method="post" action="/logout">
+            <input type="submit" value="Log out">
+          </form>
+        
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4" align="center">
+
+      </div>
+      <div class="col-sm-4">
+
+      </div>
+    </div>
+  </div>
+
+
+      
+
+
+    
+    <!DOCTYPE html>
+<html>
+  <head>
+    <title>Makersbnb</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+    var dateFormat = "mm/dd/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 3
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+  } );
+  </script>
+
+  </head>
+
+  <body>
+    <h1>Makersbnb<h1>
+
+    <ul id='space'>
+      <li>My house</li>
+      <li>Nice crib. It's rad</li>
+      <li>£2.00</li>
+      <li>tester</li>
+
+      <label for="from">Check in</label>
+      <input type="text" id="from" name="from">
+      <label for="to">Check out</label>
+      <input type="text" id="to" name="to">
+    </ul>
+
+  </body>
+</html>
+
+    <!-- yields to the view which has been called by the controller -->
+  </body>
+</html>

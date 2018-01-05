@@ -4,8 +4,8 @@ feature("view a space") do
   scenario("shows the information about the space") do
     sign_up
     create_space
-    save_and
-    within("#spaces") do
+    save_and_open_page
+    within("div#spaces") do
       click_link ("My house")
     end
     expect(current_path).to eq("/spaces/1")
