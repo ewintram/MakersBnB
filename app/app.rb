@@ -93,12 +93,17 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/bookings/new' do
-    Booking.create(start_date: Date.parse(params['from']), end_date: Date.parse(params['to']), confirmed: false, user: current_user, space: Space.first(id: params[:space]))
+    Booking.create(start_date: Date.parse(params['from']),
+                   end_date: Date.parse(params['to']),
+                   confirmed: false,
+                   user: current_user,
+                   space: Space.first(id: params[:space]))
     redirect '/bookings'
   end
 
   get '/bookings' do
     @bookings = Booking.all(user: current_user)
+    @my_bookings = true
     erb :bookings
   end
 

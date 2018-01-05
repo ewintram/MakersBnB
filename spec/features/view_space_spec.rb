@@ -3,7 +3,7 @@ feature("view a space") do
     sign_up
     create_space
     visit '/spaces'
-    within("ul") do
+    within("ul#spaces") do
       click_link ("My house")
     end
     expect(current_path).to eq("/spaces/1")
@@ -15,7 +15,7 @@ feature("view a space") do
   scenario("user can navigate back to 'my spaces'") do
     sign_up
     create_space
-    click_on "My spaces"
+    click_on "My Spaces"
     expect(current_path).to eq("/spaces/my-spaces")
   end
 end
