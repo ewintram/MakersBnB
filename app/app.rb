@@ -64,7 +64,7 @@ class MakersBnB < Sinatra::Base
   end
 
   def create_filter_for(criterion)
- 
+
     case criterion
       when "lowprice" then {:price.lte => 10}
       when "midprice" then {:price.gt => 10, :price.lte => 20}
@@ -93,13 +93,14 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/bookings/new' do
-    p params.to_s
-
-    booking = Booking.create(start_date: Date.parse(params['from']), end_date: Date.parse(params['to']), confirmed: false, user: current_user, space: Space.first(id: params[:space]))
-    p booking
-    p booking.save
+    Booking.create(start_date: Date.parse(params['from']), end_date: Date.parse(params['to']), confirmed: false, user: current_user, space: Space.first(id: params[:space]))
+    redirect '/bookings'
   end
 
+  get '/bookings' do
+    @bookings = Booking.all(user: current_user)
+    erb :bookings
+  end
 
   post '/logout' do
     session[:user_id] = nil

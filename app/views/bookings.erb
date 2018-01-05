@@ -23,12 +23,13 @@
             <%= booking.start_date %></p>
           <p>Check-out date:
             <%= booking.end_date %></p>
+            <% if booking.confirmed = true %>
+                Booking confirmed
+            <% else %>
+                Pending
+            <% end %>
       <% end %>
-      <% if booking.confirmed = true %>
-          Booking confirmed
-      <% else %>
-          Pending
-      <% end %>
+
     </ul>
 
     <button id= 'refresh' >Refresh</button>
