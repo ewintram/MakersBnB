@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Makersbnb</title>
-    <script src = 'jquery-3.2.1.min.js'></script>
-    <script src = 'interface.js'></script>
+    <script src = '/jquery-3.2.1.min.js'></script>
+    <script src = '/interface.js'></script>
 
   </head>
 
@@ -27,7 +27,8 @@
             <%= space.description %></p>
           <p>Price: £<%= format('%.2f', space.price) %></p>
           <% if @mine %>
-            <input type="button" value="View bookings">
+            <input id="view_bookings" type="button" value="View bookings">
+            <input id="hide_bookings" type="button" value="Hide bookings">
             <div id="bookings">
               <% space.bookings.select{|booking| booking.confirmed == false}.each do |booking| %>
                 <%= booking.start_date %> -- <%= booking.end_date %> booked by <%= booking.user.username %>

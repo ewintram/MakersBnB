@@ -2,9 +2,17 @@ $( document ).ready(function(){
   $("#refresh").click(function(){
   	list()
   })
+
+  $("#view_bookings").click(function(){
+    $("#bookings").show();
+  });
+
+  $("#hide_bookings").click(function(){
+    $("#bookings").hide();
+  });
 });
 
-list = function(filter= 'nil'){ 
+list = function(filter= 'nil'){
   $.get('/spaces/list/'+ filter, function(spaces) {
 	spaces.forEach(function(space) {
 	  $("#spaces").append("<li><a id='space_id' href='/spaces/" + space.id + "'>" + space.name + "</a> " + space.description +
@@ -12,15 +20,3 @@ list = function(filter= 'nil'){
 	})
   })
 }
-
-// filter = function(criterion){
-// 	$.get('/spaces/list', function(spaces) {
-// 	spaces.forEach(function(space) {
-// 		if(criterion[space.criterion[0]] === space.id){
-// 			$("#spaces").append("<li><a href='/spaces/" + space.id + "'>" + space.name + " " + space.description +
-// 			" &pound" + space.price + " listed by " + space.user + "</a></li>")
-// 		}
-// 	})
-//   })
-//
-// }
