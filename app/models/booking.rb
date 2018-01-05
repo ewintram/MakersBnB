@@ -3,9 +3,10 @@ class Booking
 
   property :id, Serial
   property :confirmed, Boolean
-  property :date_range, DateTime
+  property :start_date, Date
+  property :end_date, Date
 
-  has n, :users, through: Resource
-  has n, :spaces, through: Resource
+  belongs_to :user
+  belongs_to :space
 
 end

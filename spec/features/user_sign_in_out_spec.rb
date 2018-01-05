@@ -1,5 +1,3 @@
-require_relative 'user_access_helpers'
-
 feature "Signing in/out" do
 
   before do |example|

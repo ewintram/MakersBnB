@@ -64,7 +64,7 @@ class MakersBnB < Sinatra::Base
   end
 
   def create_filter_for(criterion)
- 
+
     case criterion
       when "lowprice" then {:price.lte => 10}
       when "midprice" then {:price.gt => 10, :price.lte => 20}
@@ -90,6 +90,16 @@ class MakersBnB < Sinatra::Base
       flash.next[:errors] = ['The email or password is incorrect']
       redirect '/users/new'
     end
+  end
+
+  post '/bookings/new' do
+    Booking.create(start_date: Date.parse(params['from']), end_date: Date.parse(params['to']), confirmed: false, user: current_user, space: Space.first(id: params[:space]))
+    redirect '/bookings'
+  end
+
+  get '/bookings' do
+    @bookings = Booking.all(user: current_user)
+    erb :bookings
   end
 
   post '/logout' do

@@ -17,11 +17,17 @@
         <div>
           <ul id="spaces">
             <% @spaces.each do |space| %>
-                <p>Name:
-                  <a href = "spaces/<%= space.id %>"><%= space.name%></a>
-                 Description:
-                  <%= space.description %>
-                Price: £<%= format('%.2f', space.price) %></p>
+            <li>
+              <p>Name:
+                <a href = '/spaces/<%= space.id %>'><%= space.name%></a></p>
+              <p>Description:
+                <%= space.description %></p>
+              <p>Price: £<%= format('%.2f', space.price) %></p>
+                <label for="from">Check in</label>
+                <input type="date" id="from" name="from">
+                <label for="to">Check out</label>
+                <input type="date" id="to" name="to">
+            </li>
             <% end %>
           </ul>
         </div>

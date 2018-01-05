@@ -1,5 +1,3 @@
-require_relative 'user_access_helpers'
-
 feature("view a space") do
   scenario("shows the information about the space") do
     sign_up

@@ -6,7 +6,7 @@ class Space
   property :description, Text
   property :price, Float, required: true
 
-  has n, :bookings, through: Resource
+  has n, :bookings
 
   belongs_to :user
 

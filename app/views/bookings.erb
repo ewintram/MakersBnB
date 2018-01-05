@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Makersbnb</title>
+    <script src = 'jquery-3.2.1.min.js'></script>
+    <script src = 'interface.js'></script>
+
+  </head>
+
+  <body>
+    <h1>Makersbnb<h1>
+    <h2>Bookings<h2>
+
+    <ul id='bookings'>
+      <% @bookings.each do |booking| %>
+
+          <p>Name:
+            <a href = "bookings/<%= booking.id %>"><%= booking.space.name%></a></p>
+          <p>Description:
+            <%= booking.space.description %></p>
+          <p>Price: £<%= format('%.2f', booking.space.price) %></p>
+          <p>Check-in date:
+            <%= booking.start_date %></p>
+          <p>Check-out date:
+            <%= booking.end_date %></p>
+            <% if booking.confirmed = true %>
+                Booking confirmed
+            <% else %>
+                Pending
+            <% end %>
+      <% end %>
+
+    </ul>
+
+    <button id= 'refresh' >Refresh</button>
+
+  </body>
+</html>

@@ -51,3 +51,11 @@ def create_space_2
   fill_in :price, with: 5
   click_button :submit_space
 end
+
+def book
+  visit '/spaces'
+  click_on 'My house'
+  fill_in 'from', with: '2018-04-12'
+  fill_in 'to', with: '2018-04-15'
+  click_on 'Submit Booking Request' 
+end
