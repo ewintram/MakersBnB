@@ -1,9 +1,78 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title> MakersBnB</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
+
+  <div id="container" class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">MakersBnB</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="/spaces">All Spaces</a></li>
+          <li><a href="#">My Spaces</a></li>
+          <% if !@home %>
+          <li><form action="/spaces">
+            <input type="submit" value="Home">
+          </form></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+
+
+
+    <div class="row">
+
+      <div class="col-sm-4" align="center">
+
+
+        <% if current_user && !@mine %>
+        <form action="/spaces/my-spaces">
+          <input type="submit" value="My spaces">
+        </form>
+        <% end %>
+      </div>
+      <div class="col-sm-4" align="center">
+      </div>
+      <div class="col-sm-4" align="right">
+        <% if current_user %>
+        Welcome <%= current_user.first_name %>!
+          <form method="post" action="/logout">
+            <input type="submit" value="Log out">
+          </form>
+        <% end %>
+        <% if !current_user%>
+          <form action="/login" method="post">
+            <input type="text" name="username" placeholder="username">
+            <input type="password" name="password" placeholder="password">
+            <input type='submit' value='Log in'>
+          </form>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4" align="center">
+
+      </div>
+      <div class="col-sm-4">
+
+      </div>
+    </div>
+  </div>
+
+
       <% if flash[:errors] && !flash[:errors].empty? %>
       Please refer to the following errors below:
       <ul id='errors'>
@@ -13,32 +82,7 @@
       </ul>
     <% end %>
 
-    <% if current_user %>
-    Welcome <%= current_user.first_name %>!
-      <form method="post" action="/logout">
-        <input type="submit" value="Log out">
-      </form>
-    <% end %>
 
-    <% if !@home %>
-    <form action="/spaces">
-      <input type="submit" value="Home">
-    </form>
-    <% end %>
-
-    <% if current_user && !@mine %>
-    <form action="/spaces/my-spaces">
-      <input type="submit" value="My spaces">
-    </form>
-    <% end %>
-
-    <% if !current_user%>
-      <form action="/login" method="post">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <input type='submit' value='Log in'>
-      </form>
-    <% end %>
     <% if flash[:notice] %>
       <div id='notice'>
         <%= flash[:notice] %>

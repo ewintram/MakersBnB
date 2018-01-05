@@ -8,30 +8,38 @@
   </head>
 
   <body>
-    <h1>Makersbnb<h1>
-    <h2>Spaces<h2>
-
-    <% if current_user %>
-    <form action="/spaces/my-spaces/new">
-      <input type="submit" value="Create a space">
-    </form>
-    <% end %>
-
-
-    <ul id='spaces'>
-      <% @spaces.each do |space| %>
-        <li>
-          <p>Name:
-            <a href = "spaces/<%= space.id %>"><%= space.name%></a></p>
-          <p>Description:
-            <%= space.description %></p>
-          <p>Price: £<%= format('%.2f', space.price) %></p>
-
-        </li>
-      <% end %>
-    </ul>
-
-    <button id= 'refresh' >Refresh</button>
+    <div class="row">
+      <div class="col-sm-4" align="center">
+      </div>
+      <div class="col-sm-4" align="center">
+        <h1>Makersbnb<h1>
+        <h3>
+        <div>
+          <ul id="spaces">
+            <% @spaces.each do |space| %>
+                <p>Name:
+                  <a href = "spaces/<%= space.id %>"><%= space.name%></a>
+                 Description:
+                  <%= space.description %>
+                Price: £<%= format('%.2f', space.price) %></p>
+            <% end %>
+          </ul>
+        </div>
+        <h3>
+      </div>
+      <div class="col-sm-4">
+        <div id="refresh_button">
+          <button id= 'refresh' >Refresh</button>
+        </div>
+        <div id="create_space_button">
+          <% if current_user %>
+          <form action="/spaces/my-spaces/new">
+            <input type="submit" value="Create a space">
+          </form>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>
