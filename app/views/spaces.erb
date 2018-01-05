@@ -22,7 +22,7 @@
       <% @spaces.each do |space| %>
         <li>
           <p>Name:
-            <a href = "<%= space.id %>"><%= space.name%></a></p>
+            <a href = '/spaces/<%= space.id %>'><%= space.name%></a></p>
           <p>Description:
             <%= space.description %></p>
           <p>Price: £<%= format('%.2f', space.price) %></p>

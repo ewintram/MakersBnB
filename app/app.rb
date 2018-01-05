@@ -95,8 +95,9 @@ class MakersBnB < Sinatra::Base
   post '/bookings/new' do
     p params.to_s
 
-    booking = Booking.create(date_range: Date.parse(params['from'])..Date.parse(params['to']), confirmed: false, user: current_user, space: params[:space])
-
+    booking = Booking.create(start_date: Date.parse(params['from']), end_date: Date.parse(params['to']), confirmed: false, user: current_user, space: Space.first(id: params[:space]))
+    p booking
+    p booking.save
   end
 
 

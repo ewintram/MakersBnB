@@ -3,7 +3,8 @@ class Booking
 
   property :id, Serial
   property :confirmed, Boolean
-  property :date_range, DateTime
+  property :start_date, Date
+  property :end_date, Date
 
   belongs_to :user
   belongs_to :space
