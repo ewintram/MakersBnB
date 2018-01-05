@@ -26,10 +26,15 @@
           <p>Description:
             <%= space.description %></p>
           <p>Price: £<%= format('%.2f', space.price) %></p>
-            <label for="from">Check in</label>
-            <input type="date" id="from" name="from">
-            <label for="to">Check out</label>
-            <input type="date" id="to" name="to">
+          <% if @mine %>
+            <input type="button" value="View bookings">
+            <div id="bookings">
+              <% space.bookings.select{|booking| booking.confirmed == false}.each do |booking| %>
+                <%= booking.start_date %> -- <%= booking.end_date %> booked by <%= booking.user.username %>
+                <input type="button" value="Confirm">
+              <% end %>
+            </div>
+          <% end %>
         </li>
       <% end %>
     </ul>
