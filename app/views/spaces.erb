@@ -34,7 +34,7 @@
               <%= if unconfirmed_bookings.empty? then"No pending bookings"  end %>
               <% unconfirmed_bookings.each do |booking| %>
                 <%= booking.start_date %> -- <%= booking.end_date %> booked by <%= booking.user.username %>
-                <input id="confirm-<%= i %>" type="button" value="Confirm">
+                <button id="confirm-<%= i %>" type="button" value="<%= booking.id %>">Confirm</button>
               <% end %>
             </div>
           <% end %>
