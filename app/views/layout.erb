@@ -2,46 +2,20 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css">
     <title> MakersBnB</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-    .navbar-right {
-      padding: 20px;
-      font-weight: bold;
-      align: right;
-    }
-    .navbar-left {
-      padding: 10px;
-      font-weight: bold;
-    }
-    .navbar-brand {
-      padding: 20px;
-      font-size: 30px;
-    }
-    .label {
-      padding-right: 10px;
-      color: grey;
-      font-size: 15px;
-    }
-    .buttons {
-      height: 26.5px;
-      margin: 5px;
-    }
-    </style>
   </head>
   <body>
-
-
-    <div id="container" class="container">
+    <div id="layout_container">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand">MakersBnB</a>
           </div>
           <ul class="nav navbar-nav navbar-left">
-            <% if !@home %><li><a href="/spaces">All Spaces</a></li>  <% end %>
-            <% if current_user && !@mine %><li><a href="/spaces/my-spaces">My Spaces</a></li><% end %>
-            <% if current_user && !@my_bookings %><li><a href="/bookings">My Bookings</a></li><% end %>
+            <li><a href="/spaces">All Spaces</a></li>
+            <% if current_user %><li><a href="/spaces/my-spaces">My Spaces</a></li>
+            <li><a href="/bookings">My Bookings</a></li><% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <div>

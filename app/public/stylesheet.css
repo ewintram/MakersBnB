@@ -1,0 +1,36 @@
+.navbar-right {
+  padding: 20px;
+  font-weight: bold;
+  align: right;
+}
+.navbar-left {
+  padding: 10px;
+  font-weight: bold;
+}
+.navbar-brand {
+  padding: 20px;
+  font-size: 30px;
+}
+.label {
+  padding-right: 10px;
+  font-size: 15px;
+  color: rgb(36, 36, 36)
+}
+
+.buttons {
+  height: 26.5px;
+  margin: 5px;
+}
+.container-fluid {
+
+}
+
+.container {
+  color: rgb(36, 36, 36);
+  font-size: 18px;
+  font: times;
+}
+
+ul {
+  list-style: none;
+}

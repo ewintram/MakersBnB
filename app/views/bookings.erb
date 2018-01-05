@@ -8,29 +8,30 @@
   </head>
 
   <body>
-    <h1>Makersbnb<h1>
-    <h2>Bookings<h2>
+    <div class="container">
+      <h2>Bookings</h2>
 
-    <ul id='bookings'>
-      <% @bookings.each do |booking| %>
+      <ul id='bookings'>
+        <% @bookings.each do |booking| %>
 
-          <p>Name:
-            <a href = "bookings/<%= booking.id %>"><%= booking.space.name%></a></p>
-          <p>Description:
-            <%= booking.space.description %></p>
-          <p>Price: £<%= format('%.2f', booking.space.price) %></p>
-          <p>Check-in date:
-            <%= booking.start_date %></p>
-          <p>Check-out date:
-            <%= booking.end_date %></p>
-            <% if booking.confirmed == true %>
-                Booking confirmed
-            <% else %>
-                Pending
-            <% end %>
-      <% end %>
+            <p>Name:
+              <a href = "/spaces/<%= booking.space.id %>"><%= booking.space.name%></a></p>
+            <p>Description:
+              <%= booking.space.description %></p>
+            <p>Price: £<%= format('%.2f', booking.space.price) %></p>
+            <p>Check-in date:
+              <%= booking.start_date %></p>
+            <p>Check-out date:
+              <%= booking.end_date %></p>
+              <% if booking.confirmed == true %>
+                  Booking confirmed
+              <% else %>
+                  Pending
+              <% end %>
+        <% end %>
 
-    </ul>
+      </ul>
+    </div>
 
 
   </body>

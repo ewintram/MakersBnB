@@ -45,7 +45,6 @@ class MakersBnB < Sinatra::Base
   get '/spaces' do
     @user = current_user
     @spaces = Space.all
-    @home = true
     erb(:spaces)
   end
 
@@ -110,7 +109,6 @@ class MakersBnB < Sinatra::Base
 
   get '/bookings' do
     @bookings = Booking.all(user: current_user)
-    @my_bookings = true
     erb :bookings
   end
 

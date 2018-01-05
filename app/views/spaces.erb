@@ -8,41 +8,42 @@
   </head>
 
   <body>
-    <h1>Makersbnb<h1>
-    <h2>Spaces<h2>
+    <div class="container">
+      <h2><%='My' if @mine %>Spaces</h2>
 
-    <% if current_user %>
-    <form action="/spaces/my-spaces/new">
-      <input type="submit" value="Create a space">
-    </form>
-    <% end %>
-
-
-    <ul id='spaces'>
-      <% @spaces.each_with_index do |space, i| %>
-        <li>
-          <p>Name:
-            <a href = '/spaces/<%= space.id %>'><%= space.name%></a></p>
-          <p>Description:
-            <%= space.description %></p>
-          <p>Price: £<%= format('%.2f', space.price) %></p>
-          <% if @mine %>
-            <input id="view_bookings-<%= i %>" type="button" value="View bookings">
-            <input id="hide_bookings-<%= i %>" type="button" value="Hide bookings" hidden = 'true'>
-            <div id="bookings-<%= i %>" hidden = 'true'>
-              <% unconfirmed_bookings = space.bookings.select{|booking| booking.confirmed == false} %> 
-              <%= if unconfirmed_bookings.empty? then"No pending bookings"  end %>
-              <% unconfirmed_bookings.each do |booking| %>
-                <%= booking.start_date %> -- <%= booking.end_date %> booked by <%= booking.user.username %>
-                <button id="confirm-<%= i %>" type="button" value="<%= booking.id %>">Confirm</button>
-              <% end %>
-            </div>
-          <% end %>
-        </li>
+      <% if current_user %>
+      <form action="/spaces/my-spaces/new">
+        <input type="submit" value="Create a space">
+      </form>
       <% end %>
-    </ul>
 
-    <button id= 'refresh' >Refresh</button>
+
+      <ul id='spaces'>
+        <% @spaces.each_with_index do |space, i| %>
+          <li>
+            <p>Name:
+              <a href = '/spaces/<%= space.id %>'><%= space.name%></a></p>
+            <p>Description:
+              <%= space.description %></p>
+            <p>Price: £<%= format('%.2f', space.price) %></p>
+            <% if @mine %>
+              <input id="view_bookings-<%= i %>" type="button" value="View bookings">
+              <input id="hide_bookings-<%= i %>" type="button" value="Hide bookings" hidden = 'true'>
+              <div id="bookings-<%= i %>" hidden = 'true'>
+                <% unconfirmed_bookings = space.bookings.select{|booking| booking.confirmed == false} %>
+                <%= if unconfirmed_bookings.empty? then"No pending bookings"  end %>
+                <% unconfirmed_bookings.each do |booking| %>
+                  <%= booking.start_date %> -- <%= booking.end_date %> booked by <%= booking.user.username %>
+                  <button id="confirm-<%= i %>" type="button" value="<%= booking.id %>">Confirm</button>
+                <% end %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <button id= 'refresh' >Refresh</button>
+    </div>
 
   </body>
 </html>

@@ -7,24 +7,25 @@
   </head>
 
   <body>
-    <h1>Makersbnb<h1>
+    <div class="container">
 
-    <ul id='space'>
-      <li><%= @space.name %></li>
-      <li><%= @space.description %></li>
-      <li>£<%= format('%.2f', @space.price) %></li>
-      <li><%= @space.user.username %></li>
-      <% if current_user %>
-        <form action = '/bookings/new' method = 'post'>
-          <label for="from">Check in</label>
-          <input type="date" id="from" name="from">
-          <input type="hidden" name="space" value= "<%= @space.id %>" >
-          <label for="to">Check out</label>
-          <input type="date" id="to" name="to">
-          <input type = 'submit' value = 'Submit Booking Request'>
-        </form>
-      <% end %>
-    </ul>
+      <ul id='space'>
+        <li><%= @space.name %></li>
+        <li><%= @space.description %></li>
+        <li>£<%= format('%.2f', @space.price) %></li>
+        <li><%= @space.user.username %></li>
+        <% if current_user %>
+          <form action = '/bookings/new' method = 'post'>
+            <label for="from">Check in</label>
+            <input type="date" id="from" name="from">
+            <input type="hidden" name="space" value= "<%= @space.id %>" >
+            <label for="to">Check out</label>
+            <input type="date" id="to" name="to">
+            <input type = 'submit' value = 'Submit Booking Request'>
+          </form>
+        <% end %>
+      </ul>
+    </div>
 
   </body>
 </html>
