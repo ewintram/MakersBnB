@@ -19,7 +19,7 @@
 
 
     <ul id='spaces'>
-      <% @spaces.each do |space| %>
+      <% @spaces.each_with_index do |space, i| %>
         <li>
           <p>Name:
             <a href = '/spaces/<%= space.id %>'><%= space.name%></a></p>
@@ -27,10 +27,12 @@
             <%= space.description %></p>
           <p>Price: £<%= format('%.2f', space.price) %></p>
           <% if @mine %>
-            <input id="view_bookings" type="button" value="View bookings">
-            <input id="hide_bookings" type="button" value="Hide bookings">
-            <div id="bookings">
-              <% space.bookings.select{|booking| booking.confirmed == false}.each do |booking| %>
+            <input id="view_bookings-<%= i %>" type="button" value="View bookings">
+            <input id="hide_bookings-<%= i %>" type="button" value="Hide bookings" hidden = 'true'>
+            <div id="bookings-<%= i %>" hidden = 'true'>
+              <% unconfirmed_bookings = space.bookings.select{|booking| booking.confirmed == false} %> 
+              <%= if unconfirmed_bookings.empty? then"No pending bookings"  end %>
+              <% unconfirmed_bookings.each do |booking| %>
                 <%= booking.start_date %> -- <%= booking.end_date %> booked by <%= booking.user.username %>
                 <input type="button" value="Confirm">
               <% end %>
