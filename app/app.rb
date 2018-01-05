@@ -94,6 +94,9 @@ class MakersBnB < Sinatra::Base
 
   post '/bookings/new' do
     p params.to_s
+
+    booking = Booking.create(date_range: Date.parse(params['from'])..Date.parse(params['to']), confirmed: false, user: current_user, space: params[:space])
+
   end
 
 
