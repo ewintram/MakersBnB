@@ -12,6 +12,12 @@ $( document ).ready(function(){
   $("#hide_bookings-" + i).click(function(){
     hidebookings(($(this).attr('id').split('-'))[1])
   });
+
+  $("#confirm-" + i).click(function(){
+  	$.post("/bookings/confirm", {booking_id: $(this).attr('value')});
+  	$(this).replaceWith(' &#10004;')
+  })
+
 };
 });
 
@@ -26,6 +32,7 @@ hidebookings = function(index){
   $("#view_bookings-" + index).show();
   $("#hide_bookings-" + index).hide();
 }
+
 
 list = function(filter= 'nil'){
   $.get('/spaces/list/'+ filter, function(spaces) {
