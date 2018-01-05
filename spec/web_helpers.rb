@@ -11,19 +11,6 @@ def sign_up(email: 'test@test.org.uk', password: 'passyword', password_confirm: 
   end
 end
 
-def sign_up_2(email: 'test2@test.org.uk', password: 'passyword2', password_confirm: 'passyword2', username: 'tester2', first_name: 'Tester2', last_name: 'MacTesterford2')
-  visit '/users/new'
-  within("#signupform") do
-    fill_in 'email', with: email
-    fill_in 'password', with: password
-    fill_in 'password_confirm', with: password_confirm
-    fill_in 'username', with: username
-    fill_in 'first_name', with: first_name
-    fill_in 'last_name', with: last_name
-    click_button 'Sign up'
-  end
-end
-
 def sign_in(username: 'tester', password: 'passyword')
   visit '/spaces'
   fill_in 'username', with: username

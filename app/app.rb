@@ -92,16 +92,24 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/bookings/new' do
-    Booking.create(start_date: Date.parse(params['from']),
-                   end_date: Date.parse(params['to']),
-                   confirmed: false,
-                   user: current_user,
-                   space: Space.first(id: params[:space]))
-    redirect '/bookings'
+    start_date = Date.parse(params['from'])
+    end_date = Date.parse(params['to'])
+
+    space = Space.first(id: params[:space])
+    if space.is_available?(start_date..end_date)
+      Booking.create(start_date: start_date,
+                     end_date: end_date,
+                     confirmed: false,
+                     user: current_user,
+                     space: space)
+      redirect '/bookings'
+    else
+      flash.keep[:notice] = 'This space is not available on those dates!'
+    end
+
   end
 
   post '/bookings/confirm' do
-    p params[:booking_id]
     booking = Booking.first(id: params[:booking_id])
     booking.confirmed = true
     booking.save
