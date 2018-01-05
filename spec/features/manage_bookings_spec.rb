@@ -14,4 +14,12 @@ feature "Bookings" do
     expect(page).to have_content "Check-in date: 2018-04-12"
   end
 
+  scenario "users cannot book dates already booked" do
+    sign_up
+  	create_space
+    book
+    book
+    expect(page).to have_content 'This space is not available on those dates!'
+    expect { book }.to change { Booking.count }.by 0
+  end
 end
