@@ -12,7 +12,7 @@
     <h2>Bookings<h2>
 
     <ul id='bookings'>
-      <% @bookings.each do |space| %>
+      <% @bookings.each do |booking| %>
 
           <p>Name:
             <a href = "bookings/<%= booking.id %>"><%= booking.space.name%></a></p>
@@ -20,10 +20,14 @@
             <%= booking.space.description %></p>
           <p>Price: £<%= format('%.2f', booking.space.price) %></p>
           <p>Check-in date:
-            <%= booking.date_range.first %></p>
+            <%= booking.start_date %></p>
           <p>Check-out date:
-            <%= booking.date_range.last %></p>
-
+            <%= booking.end_date %></p>
+      <% end %>
+      <% if booking.confirmed = true %>
+          Booking confirmed
+      <% else %>
+          Pending
       <% end %>
     </ul>
 
