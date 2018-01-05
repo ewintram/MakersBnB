@@ -1,3 +1,10 @@
+class Range
+
+  def overlaps?(other)
+  cover?(other.first) || other.cover?(first)
+  end
+end
+
 class Space
   include DataMapper::Resource
 
@@ -10,4 +17,10 @@ class Space
 
   belongs_to :user
 
+def is_available?(dates)
+  bookings.each do |booking|
+    return false if (booking.start_date..booking.end_date).overlaps?(dates) == true
+  end
+  true
+end
 end
