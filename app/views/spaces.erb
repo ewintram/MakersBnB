@@ -26,7 +26,10 @@
           <p>Description:
             <%= space.description %></p>
           <p>Price: £<%= format('%.2f', space.price) %></p>
-
+            <label for="from">Check in</label>
+            <input type="date" id="from" name="from">
+            <label for="to">Check out</label>
+            <input type="date" id="to" name="to">
         </li>
       <% end %>
     </ul>

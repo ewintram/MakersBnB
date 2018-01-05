@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Makersbnb</title>
-   
+
 
   </head>
 
@@ -17,6 +17,7 @@
       <form action = '/bookings/new' method = 'post'>
         <label for="from">Check in</label>
         <input type="date" id="from" name="from">
+        <input type="hidden" name="space" value= "<%= @space.id %>" >
         <label for="to">Check out</label>
         <input type="date" id="to" name="to">
         <input type = 'submit' value = 'Submit Booking Request'>
