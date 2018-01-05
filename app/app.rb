@@ -101,6 +101,13 @@ class MakersBnB < Sinatra::Base
     redirect '/bookings'
   end
 
+  post '/bookings/confirm' do
+    p params[:booking_id]
+    booking = Booking.first(id: params[:booking_id])
+    booking.confirmed = true
+    booking.save
+  end
+
   get '/bookings' do
     @bookings = Booking.all(user: current_user)
     @my_bookings = true
