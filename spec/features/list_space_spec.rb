@@ -1,5 +1,3 @@
-require_relative 'user_access_helpers'
-
 feature("test framework functioning") do
   scenario("shows the page title") do
     visit '/spaces'

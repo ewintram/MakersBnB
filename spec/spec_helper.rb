@@ -5,6 +5,7 @@ require './app/app'
 require 'selenium/webdriver'
 require 'database_cleaner'
 require 'pry'
+require_relative 'web_helpers'
 
 Capybara.app = MakersBnB
 
