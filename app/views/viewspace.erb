@@ -2,41 +2,7 @@
 <html>
   <head>
     <title>Makersbnb</title>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    $( function() {
-    var dateFormat = "mm/dd/yy",
-      from = $( "#from" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 3
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( "#to" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 3
-      })
-      .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
-      });
-
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
-
-      return date;
-    }
-  } );
-  </script>
+   
 
   </head>
 
@@ -48,11 +14,13 @@
       <li><%= @space.description %></li>
       <li>£<%= format('%.2f', @space.price) %></li>
       <li><%= @space.user.username %></li>
-
-      <label for="from">Check in</label>
-      <input type="text" id="from" name="from">
-      <label for="to">Check out</label>
-      <input type="text" id="to" name="to">
+      <form action = '/bookings/new' method = 'post'>
+        <label for="from">Check in</label>
+        <input type="date" id="from" name="from">
+        <label for="to">Check out</label>
+        <input type="date" id="to" name="to">
+        <input type = 'submit' value = 'Submit Booking Request'>
+      </form>
     </ul>
 
   </body>

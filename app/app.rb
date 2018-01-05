@@ -92,6 +92,11 @@ class MakersBnB < Sinatra::Base
     end
   end
 
+  post '/bookings/new' do
+    p params.to_s
+  end
+
+
   post '/logout' do
     session[:user_id] = nil
     flash.keep[:notice] = 'goodbye!'
