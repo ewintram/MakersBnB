@@ -54,14 +54,19 @@ To launch the app, run
 
 Navigate to http://localhost:9292/spaces
 
+### Views
+
 ![alt text](/images/index.png "Spaces page")
+Spaces page
 
 ![alt text](/images/make-a-booking.png "Space page with booking")
+Individual space page where user can make a booking
 
 ![alt text](/images/my-bookings.png "My bookings page")
+My bookings page displaying pending and confirmed bookings
 
 ![alt text](/images/my-spaces.png "My spaces page")
-
+My spaces page showing all of the spaces belonging to the current user
 
 ## Running tests
 
