@@ -16,7 +16,7 @@ If not, install instructions can be found [here](https://www.ruby-lang.org/en/do
 
 Clone the repo on the command line by running
 
-`git clone git@github.com:ewintram/instagram-challenge.git`
+`git clone git@github.com:ewintram/MakersBnB.git`
 
 Check that you have bundler installed
 
